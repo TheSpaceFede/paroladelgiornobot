@@ -32,17 +32,17 @@ bot.command('paroladelgiorno', (ctx) => {
 
 //Comando /Paroladelgiornocerca
 bot.command('paroladelgiornocerca', (ctx) => {
-	ctx.reply('Quale parola vuoi cercare?:")
+	ctx.reply('Quale parola vuoi cercare?:')
 	bot.on('text', ctx =>{
 		parola = ctx.message.text;
-	}
-)}
+	})
+})
 
 //Comando /paroladelgiornodata
 bot.command('paroladelgiornodata', (ctx) => {
 	ctx.reply('La parola del giorno è:')
 	
-)}
+})
 
 //Loop
 bot.startPolling();
