@@ -3,7 +3,7 @@
 //Ver: Alpha 1.0
 //Date: 13/03/2020
 const Telegraf = require('telegraf');
-const bot = new Telegraf("1106305539:AAH3NMX0V-9OqDon0CTjIvK-kbo6E20p0sM");
+const bot = new Telegraf("940436854:AAElNinpdn4ltqFu0s1S4-_y5VgSry16kLI");
 const axios = require('axios');
 const session = require('telegraf/session');
 const Stage = require('telegraf/stage');
