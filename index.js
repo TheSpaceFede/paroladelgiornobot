@@ -24,6 +24,7 @@ var today = dd + '/' + mm + '/' + yyyy;
 //Avvio del bot
 bot.start((message) => {
   console.log('started');
+  console.log(today);
   return message.reply('Benvenuto nel bot per le parole del giorno\nCreato da:\nFederico Imbriani @TheSpaceFede\nGabriele Esposito @TwoCondor\nProprieta dei Quark\n\nInfo\nVer: Alpha 1.0\nDate: 13/03/2020');
 })
 
