@@ -1,7 +1,7 @@
 ﻿//Bot Telegram: "@Parola_del_giorno_bot"
 //Developed by: Federico Imbriani @TheSpaceFede and Gabriele Esposito @TwoCondor
 //Ver: Beta 1.0.0
-//Date: 18/03/2020
+//Date: 20/03/2020
 
 const Telegraf = require('telegraf');
 const bot = require('./token.js');
