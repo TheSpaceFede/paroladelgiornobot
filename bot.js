@@ -195,14 +195,11 @@ const verifica = new WizardScene(
 				}, 500);
 			}
 			else if (testo[i] == 'batman' || testo[i] == 'Batman' ||testo[i] == 'joker' || testo[i] == 'Joker'){
-				return ctx.replyWithAnimation({ source: fs.createReadStream('File/batman.gif') });
+				return ctx.replyWithAnimation({ source: fs.createReadStream('/File/batman.gif') });
 			}
 			else if (testo[i] == 'pagliaccio' || testo[i] == 'buffone' || testo[i] == 'Pagliaccio' || testo[i] == 'Buffone'
 			  ||testo[i] == 'pagliaccio!' || testo[i] == 'buffone!' || testo[i] == 'Pagliaccio!' || testo[i] == 'Buffone!'){
 				return ctx.replyWithSticker('CAACAgQAAxkBAAI1P150n_AbIwja8GC_ZIZqUCXXiJXQAAKNAAMJeyMYHbcGPtt_pdkYBA');
-			}
-			//if (testo[i] == '/\/start' || testo[i] == '/\/paroladelgiorno' || testo[i] == '/cerca' || testo[i] == '/data' || testo[i] == '/scarica' || testo[i] == '/annulla' || testo[i] == '/help'){
-			else{
 			}
 		}
 	}
