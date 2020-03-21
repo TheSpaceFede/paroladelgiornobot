@@ -1,7 +1,7 @@
 ﻿//Bot Telegram: "@Parola_del_giorno_bot"
 //Developed by: Federico Imbriani @TheSpaceFede and Gabriele Esposito @TwoCondor
-//Ver: Beta 1.0.0
-//Date: 20/03/2020
+//Ver: Beta 1.1.0
+//Date: 21/03/2020
 
 const shellExec = require('shell-exec');
 const Telegraf = require('telegraf');
@@ -204,7 +204,7 @@ const verifica = new WizardScene(
 				}, 500);
 			}
 			else if (testo[i] == 'batman' || testo[i] == 'Batman' ||testo[i] == 'joker' || testo[i] == 'Joker'){
-				return ctx.replyWithAnimation({ source: fs.createReadStream('/File/batman.gif') });
+				return ctx.replyWithAnimation({ source: fs.createReadStream('/home/pi/paroladelgiornobot/File/batman.gif') });
 			}
 			else if (testo[i] == 'pagliaccio' || testo[i] == 'buffone' || testo[i] == 'Pagliaccio' || testo[i] == 'Buffone'
 			  ||testo[i] == 'pagliaccio!' || testo[i] == 'buffone!' || testo[i] == 'Pagliaccio!' || testo[i] == 'Buffone!'){
@@ -256,7 +256,7 @@ bot.launch();
 bot.command('scarica', ctx => {
 	var giornodioggi=[];
 	giornodioggi = today.split('/');
-	ctx.replyWithDocument({source: fs.createReadStream('Record.txt'), filename: 'paroledelgiorno'+giornodioggi[0]+'-'+giornodioggi[1]+'-'+giornodioggi[2]+'.txt'});
+	ctx.replyWithDocument({source: fs.createReadStream(Record), filename: 'paroledelgiorno'+giornodioggi[0]+'-'+giornodioggi[1]+'-'+giornodioggi[2]+'.txt'});
 });
 bot.launch();
 
@@ -264,7 +264,7 @@ bot.launch();
 
 //Comando /help
 bot.command('help', ctx => {
-	ctx.reply('Con questo bot puoi impostare la nuova parola del giorno, cercare le parole del giorno passate o vedere qual' + "'" + 'era la parola del giorno di una certa data.\nPuoi usare i seguenti comandi:\n/paroladelgiorno - Ti permette di impostare la nuova parola del giorno, ma ricorda che puoi usarlo solo una volta al giorno\n/cerca - Con questo comando puoi cercare se una parola è stata parola del giorno e scoprire quando\n/data - Questo invece ti permette di scoprire qual' +"'" + 'era la parola del giorno in una certa data\n/annulla - Semplicemente annulla l' + "'" + 'operazione in corso\n' + crediti + versione);
+	ctx.reply('Con questo bot puoi impostare la nuova parola del giorno, cercare le parole del giorno passate o vedere qual' + "'" + 'era la parola del giorno di una certa data.\nPuoi usare i seguenti comandi:\n/paroladelgiorno - Ti permette di impostare la nuova parola del giorno, ma ricorda che puoi usarlo solo una volta al giorno\n/cerca - Con questo comando puoi cercare se una parola è stata parola del giorno e scoprire quando\n/data - Questo invece ti permette di scoprire qual' +"'" + 'era la parola del giorno in una certa data\n/scarica - Permette di scaricare il file con tutte le parole del giorno in ordine cronologico\n/annulla - Semplicemente annulla l' + "'" + 'operazione in corso\n' + crediti + versione);
 });
 bot.launch();
 
