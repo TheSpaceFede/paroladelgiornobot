@@ -42,10 +42,10 @@ schedule.scheduleJob('30 00 * * *', () => {
 	shellExec('rclone copy /home/pi/paroladelgiornobot/Record.txt gdrive:telegram/paroladelgiornobot');
 	console.log('backup Record.txt');
 });
-schedule.scheduleJob('47 * * * *', () => { 
-	shellExec('sudo reboot');
-	console.log('rebooting');
-});
+//schedule.scheduleJob('47 * * * *', () => { 
+//	shellExec('sudo reboot');
+//	console.log('rebooting');
+//});
 
 
 
