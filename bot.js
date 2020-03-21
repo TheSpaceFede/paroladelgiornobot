@@ -3,6 +3,7 @@
 //Ver: Beta 1.0.0
 //Date: 20/03/2020
 
+const shellExec = require('shell-exec');
 const Telegraf = require('telegraf');
 const bot = require('./token.js');
 const versione = require('./version.js');
@@ -36,6 +37,14 @@ bot.start((message) => {
 schedule.scheduleJob('00 00 * * *', () => { 
 	bot.telegram.sendMessage('-1001171692979','Allora... la parola di oggi?' )	
 	//Thisisonlyatest*/bot.telegram.sendMessage('-1001129125003','Allora... la parola di oggi?' )
+});
+schedule.scheduleJob('30 00 * * *', () => { 
+	shellExec('rclone copy /home/pi/paroladelgiornobot/Record.txt gdrive:telegram/paroladelgiornobot');
+	console.log('backup Record.txt');
+});
+schedule.scheduleJob('47 * * * *', () => { 
+	shellExec('sudo reboot');
+	console.log('rebooting');
 });
 
 
