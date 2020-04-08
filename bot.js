@@ -1,9 +1,9 @@
 ﻿//Bot Telegram: "@Parola_del_giorno_bot"
 //Developed by: Federico Imbriani @TheSpaceFede and Gabriele Esposito @TwoCondor
-//Ver: Beta 1.1.0
-//Date: 21/03/2020
+//Ver: Beta 1.2.0
+//Date: 08/04/2020
 
-const shellExec = require('shell-exec');
+// shellExec = require('shell-exec');
 const Telegraf = require('telegraf');
 const bot = require('./token.js');
 const versione = require('./version.js');
@@ -22,7 +22,7 @@ var dd = String(today.getDate()).padStart(2, '0');
 var mm = String(today.getMonth() + 1).padStart(2, '0');
 var yyyy = today.getFullYear();
 var today = dd + '/' + mm + '/' + yyyy;
-var Record = ('/home/pi/paroladelgiornobot/Record.txt')
+var Record = ('./Record.txt')
 
 
 
@@ -38,14 +38,14 @@ schedule.scheduleJob('00 00 * * *', () => {
 	bot.telegram.sendMessage('-1001171692979','Allora... la parola di oggi?' )	
 	//Thisisonlyatest*/bot.telegram.sendMessage('-1001129125003','Allora... la parola di oggi?' )
 });
-schedule.scheduleJob('30 00 * * *', () => { 
+schedule.scheduleJob('30 23 * * *', () => { 
 	shellExec('rclone copy /home/pi/paroladelgiornobot/Record.txt gdrive:telegram/paroladelgiornobot');
 	console.log('backup Record.txt');
 });
-//schedule.scheduleJob('47 * * * *', () => { 
-//	shellExec('sudo reboot');
-//	console.log('rebooting');
-//});
+schedule.scheduleJob('47 00 * * *', () => { 
+	shellExec('sudo reboot');
+	console.log('rebooting');
+});
 
 
 
@@ -185,30 +185,50 @@ const verifica = new WizardScene(
     if(ctx.message.text) {
 		var testo = [];
 		testo = ctx.message.text.split(' ');
+		var trequarti = (((testo.length-1)/4)*3);
+		if(ctx.from.id == "404978441" || ctx.from.id == "816264035") {
+			for (i=testo.length-1; i>=trequarti; i--){
+				if (testo[i] == 'chi'  || testo[i] == 'chi?'  || testo[i] == 'chi!'  || testo[i] == 'chi?!'  || testo[i] == 'chi!?'
+				|| testo[i] == 'Chi'  || testo[i] == 'Chi?'  || testo[i] == 'Chi!'  || testo[i] == 'Chi?!'  || testo[i] == 'Chi!?'
+				|| testo[i] == 'CHi'  || testo[i] == 'CHi?'  || testo[i] == 'CHi!'  || testo[i] == 'CHi?!'  || testo[i] == 'CHi!?'
+				|| testo[i] == 'ChI'  || testo[i] == 'ChI?'  || testo[i] == 'ChI!'  || testo[i] == 'ChI?!'  || testo[i] == 'ChI!?'
+				|| testo[i] == 'CHI'  || testo[i] == 'CHI?'  || testo[i] == 'CHI!'  || testo[i] == 'CHI?!'  || testo[i] == 'CHI!?'
+				|| testo[i] == 'cHi'  || testo[i] == 'cHi?'  || testo[i] == 'cHi!'  || testo[i] == 'cHi?!'  || testo[i] == 'cHi!?'
+				|| testo[i] == 'chI'  || testo[i] == 'chI?'  || testo[i] == 'chI!'  || testo[i] == 'chI?!'  || testo[i] == 'chI!?'
+				|| testo[i] == 'cHI'  || testo[i] == 'cHI?'  || testo[i] == 'cHI!'  || testo[i] == 'cHI?!'  || testo[i] == 'cHI!?'
+				|| testo[i] == 'C*i'  || testo[i] == 'C*i?'  || testo[i] == 'C*i!'  || testo[i] == 'C*i?!'  || testo[i] == 'C*i!?'
+				|| testo[i] == 'C*I'  || testo[i] == 'C*I?'  || testo[i] == 'C*I!'  || testo[i] == 'C*I?!'  || testo[i] == 'C*I!?'
+				|| testo[i] == 'c*i'  || testo[i] == 'c*i?'  || testo[i] == 'c*i!'  || testo[i] == 'c*i?!'  || testo[i] == 'c*i!?'
+				|| testo[i] == 'c*I'  || testo[i] == 'c*I?'  || testo[i] == 'c*I!'  || testo[i] == 'c*I?!'  || testo[i] == 'c*I!?'){
+					ctx.reply('STOCAZZO!');
+					setTimeout(function() {
+						return ctx.reply('Questo messaggio ha valore legale nella diatriba a favore dell' + "'" + 'avversario.');
+					}, 500);
+				}
+			}
+		}
 		for (i=testo.length-1; i>=0; i--){
-			if (testo[i] == 'chi'  || testo[i] == 'chi?'  || testo[i] == 'chi!'  || testo[i] == 'chi?!'  || testo[i] == 'chi!?'
-			 || testo[i] == 'Chi'  || testo[i] == 'Chi?'  || testo[i] == 'Chi!'  || testo[i] == 'Chi?!'  || testo[i] == 'Chi!?'
-			 || testo[i] == 'CHi'  || testo[i] == 'CHi?'  || testo[i] == 'CHi!'  || testo[i] == 'CHi?!'  || testo[i] == 'CHi!?'
-			 || testo[i] == 'ChI'  || testo[i] == 'ChI?'  || testo[i] == 'ChI!'  || testo[i] == 'ChI?!'  || testo[i] == 'ChI!?'
-			 || testo[i] == 'CHI'  || testo[i] == 'CHI?'  || testo[i] == 'CHI!'  || testo[i] == 'CHI?!'  || testo[i] == 'CHI!?'
-			 || testo[i] == 'cHi'  || testo[i] == 'cHi?'  || testo[i] == 'cHi!'  || testo[i] == 'cHi?!'  || testo[i] == 'cHi!?'
-			 || testo[i] == 'chI'  || testo[i] == 'chI?'  || testo[i] == 'chI!'  || testo[i] == 'chI?!'  || testo[i] == 'chI!?'
-			 || testo[i] == 'cHI'  || testo[i] == 'cHI?'  || testo[i] == 'cHI!'  || testo[i] == 'cHI?!'  || testo[i] == 'cHI!?'
-			 || testo[i] == 'C*i'  || testo[i] == 'C*i?'  || testo[i] == 'C*i!'  || testo[i] == 'C*i?!'  || testo[i] == 'C*i!?'
-			 || testo[i] == 'C*I'  || testo[i] == 'C*I?'  || testo[i] == 'C*I!'  || testo[i] == 'C*I?!'  || testo[i] == 'C*I!?'
-			 || testo[i] == 'c*i'  || testo[i] == 'c*i?'  || testo[i] == 'c*i!'  || testo[i] == 'c*i?!'  || testo[i] == 'c*i!?'
-			 || testo[i] == 'c*I'  || testo[i] == 'c*I?'  || testo[i] == 'c*I!'  || testo[i] == 'c*I?!'  || testo[i] == 'c*I!?'){
-				ctx.reply('STOCAZZO!');
+			if (testo[i] == 'batman' || testo[i] == 'Batman' ||testo[i] == 'joker' || testo[i] == 'Joker'){
+				return ctx.replyWithAnimation({ source: fs.createReadStream('./File/batman.gif') });
+			}
+			if (testo[i] == 'pagliaccio' || testo[i] == 'buffone' || testo[i] == 'Pagliaccio' || testo[i] == 'Buffone'
+				||testo[i] == 'pagliaccio!' || testo[i] == 'buffone!' || testo[i] == 'Pagliaccio!' || testo[i] == 'Buffone!'){
+				return ctx.replyWithSticker('CAACAgQAAxkBAAI1P150n_AbIwja8GC_ZIZqUCXXiJXQAAKNAAMJeyMYHbcGPtt_pdkYBA');
+			}
+			if (testo[i] == 'comunista' || testo[i] == 'Comunista' || testo[i] == 'comunista!' || testo[i] == 'Comunista!'){
+				ctx.reply("\u{1F1F7}\u{1F1FA}"+"\u{1F1F7}\u{1F1FA}"+"\u{1F1F7}\u{1F1FA}"+"\u{1F1F7}\u{1F1FA}"+"\u{1F1F7}\u{1F1FA}");
 				setTimeout(function() {
-					return ctx.reply('Questo messaggio ha valore legale nella diatriba a favore dell' + "'" + 'avversario.');
+				ctx.reply('https://youtu.be/U06jlgpMtQs');
+				}, 500);
+				setTimeout(function() {
+				ctx.reply("\u{1F1F7}\u{1F1FA}"+"\u{1F1F7}\u{1F1FA}"+"\u{1F1F7}\u{1F1FA}"+"\u{1F1F7}\u{1F1FA}"+"\u{1F1F7}\u{1F1FA}");
 				}, 500);
 			}
-			else if (testo[i] == 'batman' || testo[i] == 'Batman' ||testo[i] == 'joker' || testo[i] == 'Joker'){
-				return ctx.replyWithAnimation({ source: fs.createReadStream('/home/pi/paroladelgiornobot/File/batman.gif') });
+			if (testo[i] == 'comunisti' || testo[i] == 'Comunisti' || testo[i] == 'comunisti!' || testo[i] == 'Comunisti!'){
+				return ctx.replyWithAnimation({ source: fs.createReadStream('./File/comunisti.gif') });
 			}
-			else if (testo[i] == 'pagliaccio' || testo[i] == 'buffone' || testo[i] == 'Pagliaccio' || testo[i] == 'Buffone'
-			  ||testo[i] == 'pagliaccio!' || testo[i] == 'buffone!' || testo[i] == 'Pagliaccio!' || testo[i] == 'Buffone!'){
-				return ctx.replyWithSticker('CAACAgQAAxkBAAI1P150n_AbIwja8GC_ZIZqUCXXiJXQAAKNAAMJeyMYHbcGPtt_pdkYBA');
+			if (testo[i] == 'fascista' || testo[i] == 'Fascista' || testo[i] == 'fascista!' || testo[i] == 'Fascista!'){
+				return ctx.replyWithPhoto({ source: fs.createReadStream('./File/fascista.jpg') });
 			}
 		}
 	}
